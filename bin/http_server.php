@@ -79,6 +79,7 @@ $server->on('request', function (\Swoole\Http\Request $request, \Swoole\Http\Res
         $response->end();
         return;
     }
+    //处理图标
     if ($request->server['path_info'] == '/favicon.ico' || $request->server['request_uri'] == '/favicon.ico') {
         $response->end();
         return;
@@ -106,7 +107,7 @@ $server->on('workerStart', function ($servers, $id) {
 //  一键协程化,请求间的协程
     Runtime::enableCoroutine(SWOOLE_HOOK_ALL);
 //  PDO连接池
-    if (!empty(env('database.pool'))) {
+    if (!empty(env('database.use')) && !empty(env('database.pool'))) {
         $pdoConfig = new \Swoole\Database\PDOConfig();
         $pdoConfig->withHost(env('database.host'))->withPort(env('database.port'))
                   ->withDbname(env('database.dbname'))
@@ -122,7 +123,7 @@ $server->on('workerStart', function ($servers, $id) {
         $redisConfig = new \Swoole\Database\RedisConfig();
         $redisConfig->withHost(env('redis.host'))
                     ->withPort(env('redis.port'))
-                    ->withAuth('')
+                    ->withAuth(env('redis.auth'))
                     ->withDbIndex(env('redis.index'))
                     ->withTimeout(env('redis.timeout'));
         $redisPool = new \Swoole\Database\RedisPool($redisConfig, env('database.pool'));
