@@ -26,7 +26,6 @@
     ],
     "scripts": {
         "post-autoload-dump": [
-            "composer install"
         ]
     }
 }
