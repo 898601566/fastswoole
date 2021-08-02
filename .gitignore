@@ -3,7 +3,7 @@
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
-.composer.lock
+composer.lock
 .idea
 vendor
 *.log
