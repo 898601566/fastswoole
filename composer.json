@@ -26,6 +26,7 @@
     ],
     "scripts": {
         "post-autoload-dump": [
+            "rm -rf runtime && mkdir runtime && mkdir runtime/logs"
         ]
     }
 }
