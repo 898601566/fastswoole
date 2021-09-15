@@ -12,9 +12,6 @@ use App\exception\SystemException;
 use App\index\model\Admin;
 use App\index\model\BigData;
 use Fastswoole\core\Controller;
-use Fastswoole\core\Di;
-use Fastswoole\model\Model;
-use Fastswoole\model\RedisInstance;
 
 class Index extends Controller
 {

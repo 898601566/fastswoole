@@ -88,7 +88,7 @@ $server->on('request', function (\Swoole\Http\Request $request, \Swoole\Http\Res
     $app = new \Fastswoole\core\App($request, $response, $server);
     echo "request:" . date("Y-m-d H:i:s") . "\n";
     //APP启动
-    $app->run();
+    $app->run($request);
 });
 
 //处理异步任务的结果(此回调函数在worker进程中执行)
